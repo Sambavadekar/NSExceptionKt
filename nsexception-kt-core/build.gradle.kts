@@ -1,9 +1,9 @@
 plugins {
-    @Suppress("DSL_SCOPE_VIOLATION")
     alias(libs.plugins.kotlin.multiplatform)
-    `nsexception-kt-publish`
+    id(libs.plugins.maven.publish.get().pluginId)
 }
-
+val GITHUB_USER: String? by project
+val GITHUB_TOKEN: String? by project
 kotlin {
     explicitApi()
     jvmToolchain(11)
@@ -15,19 +15,27 @@ kotlin {
         tvosArm64(), tvosX64(), tvosSimulatorArm64()
     ).forEach {
         it.compilations.getByName("main") {
-            cinterops.create("NSExceptionKtCoreObjC") {
-                includeDirs("$projectDir/../NSExceptionKtCoreObjC")
-            }
         }
     }
 
     sourceSets {
         all {
-            languageSettings.optIn("com.rickclephas.kmp.nsexceptionkt.core.InternalNSExceptionKtApi")
+            languageSettings.optIn("com.sambavadekar.kmp.nsexceptionkt.core.InternalNSExceptionKtApi")
         }
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
+            }
+        }
+    }
+}
+publishing {
+    repositories {
+        maven {
+            setUrl("https://maven.pkg.github.com/Sambavadekar/NSExceptionKt")
+            credentials {
+                username = GITHUB_USER
+                password = GITHUB_TOKEN
             }
         }
     }

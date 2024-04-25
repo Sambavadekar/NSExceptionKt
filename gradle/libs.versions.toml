@@ -3,3 +3,4 @@ kotlin = "1.9.23"
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+maven-publish = { id = "maven-publish" }
