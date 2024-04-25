@@ -6,4 +6,4 @@ pluginManagement {
 }
 
 rootProject.name = "NSExceptionKt"
-include(":nsexception-kt-core")
+include(":nsktexception")
