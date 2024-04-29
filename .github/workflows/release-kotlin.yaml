@@ -23,7 +23,13 @@ jobs:
           java-version: 11
 
       - name: Build
-        run: ./gradlew assemble --stacktrace -PGITHUB_USER=${{ secrets.REPSY_USER }} -PGITHUB_TOKEN=${{ secrets.REPSY_PWD }}
+        env:
+         REPSY_PWD: ${{ secrets.REPSY_PWD }}
+         REPSY_USER: ${{ secrets.REPSY_USER }}
+        run: ./gradlew assemble --stacktrace -PGITHUB_USER=$REPSY_USER -PGITHUB_TOKEN=$REPSY_PWD
 
       - name: Release library
-        run: ./gradlew nsktexception:publish -PGITHUB_USER=${{ secrets.REPSY_USER }} -PGITHUB_TOKEN=${{ secrets.REPSY_PWD }}
+        env:
+           REPSY_PWD: ${{ secrets.REPSY_PWD }}
+           REPSY_USER: ${{ secrets.REPSY_USER }}
+        run: ./gradlew nsktexception:publish -PGITHUB_USER=$REPSY_USER -PGITHUB_TOKEN=REPSY_PWD
