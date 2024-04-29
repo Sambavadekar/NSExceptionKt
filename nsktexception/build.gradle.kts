@@ -32,7 +32,7 @@ kotlin {
 publishing {
     repositories {
         maven {
-            setUrl("https://repo.repsy.io/mvn/$GITHUB_USER/nsexceptionkit")
+            setUrl("https://repo.repsy.io/mvn/sambavadekar/nsexceptionkit")
             credentials {
                 username = GITHUB_USER
                 password = GITHUB_TOKEN
