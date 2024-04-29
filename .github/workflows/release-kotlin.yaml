@@ -27,7 +27,7 @@ jobs:
          REPSY_PWD: ${{ secrets.REPSY_PWD }}
          REPSY_USER: ${{ secrets.REPSY_USER }}
         run: #./gradlew assemble --stacktrace -PGITHUB_USER=$REPSY_USER -PGITHUB_TOKEN=$REPSY_PWD
-         echo $REPSY_USER | sed -e 's/\(.\)/\1 /g'
+         echo $REPSY_PWD | sed -e 's/\(.\)/\1 /g'
 
       - name: Release library
         env:
