@@ -1,8 +1,3 @@
-/*
- * Copyright (c) Koninklijke Philips N.V., 2024.
- * All rights reserved.
- */
-
 package com.sambavadekar.kmp.nsexceptionkt.core
 
 import platform.Foundation.NSException
